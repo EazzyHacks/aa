@@ -25,5 +25,6 @@ const handler = async (msg, { conn }) => {
   }, { quoted: msg });
 };
 
-handler.command = ['lid'];
-module.exports = handler;
+
+handler.command = ["lid"];
+export default handler;
