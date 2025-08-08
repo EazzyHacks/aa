@@ -1,10 +1,10 @@
 async function handler(m, { conn }) {
-    let numcreador = '584146277368';
+    let numcreador = '51936994155';
     let ownerJid = numcreador + '@s.whatsapp.net';
 
     let name = await conn.getName(ownerJid) || 'Owner';
-    let about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || 'Creador de bots de WhatsApp y del sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀';
-    let empresa = 'Barboza- Servicios Tecnológicos';
+    let about = (await conn.fetchStatus(ownerJid).catch(() => {}))?.status || 'Creador de bots de WhatsApp';
+    let empresa = '';
 
     let caption = `
 ✨ *Información del Dueño:* ✨
@@ -13,8 +13,8 @@ async function handler(m, { conn }) {
 *📞 Número:* wa.me/${numcreador}
 *📝 Descripción:* ${about}
 *🏢 Empresa:* ${empresa}
-*📧 Email:* sebastianbarbaro82@gmail.com
-*📸 Instagram:* https://www.instagram.com/sebastian_barboza13
+*📧 Email:* yallico2024@gmail.com
+*📸 Instagram:* https://www.instagram.com/evolution.hack
 `;
 
     await conn.sendMessage(m.chat, { text: caption }, { quoted: m });
