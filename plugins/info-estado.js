@@ -2,7 +2,7 @@ let handler = async (m, { conn, isRowner }) => {
     let _muptime;
     let totalreg = Object.keys(global.db.data.users).length;
     let totalchats = Object.keys(global.db.data.chats).length;
-    let pp = 'https://cdn-sunflareteam.vercel.app/images/fe2072569a.jpg'; // Usamos la URL de la imagen aquí
+    let pp = 'https://files.catbox.moe/faoobx.jpeg'; // Usamos la URL de la imagen aquí
 
     if (process.send) {
         process.send('uptime');
@@ -16,7 +16,7 @@ let handler = async (m, { conn, isRowner }) => {
     const chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats);
     const groupsIn = chats.filter(([id]) => id.endsWith('@g.us'));
     const used = process.memoryUsage();
-    let Sisked = `╭─⬣「 *Estado De sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀* 」⬣\n`;
+    let Sisked = `╭─⬣「 *Estado* 」⬣\n`;
     Sisked += `│ 👤 *Creador ∙* Barboza\n`;
     Sisked += `│ 💎 *Grupos Unidos ∙* ${groupsIn.length}\n`;
     Sisked += `│ 💨 *Chats Privados ∙* ${chats.length - groupsIn.length}\n`;
