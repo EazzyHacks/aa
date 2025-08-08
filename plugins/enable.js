@@ -242,8 +242,8 @@ para el bot
 m.reply(`⚠️ 𝐄𝐯𝐨𝐥𝐮𝐭𝐢𝐨𝐧 𝐂𝐨𝐧𝐟𝐢𝐠 ⚠️
 
 ⚜️ 𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐄𝐣𝐞𝐜𝐮𝐭𝐚𝐝𝐨 : '${type}'
-〽️ 𝐒𝐭𝐚𝐭𝐮𝐬 : '${isEnable?' 'Activado': 'Desactivado'}
-🗣 𝐋𝐮𝐠𝐚𝐫 : '${isAll?' '𝐄𝐧 𝐄𝐥 𝐌𝐞𝐣𝐨𝐫 𝐆𝐫𝐮𝐩𝐨': isUser? '*Usuario específico*': '𝐄𝐧 𝐄𝐥 𝐂𝐡𝐚𝐭'}
+〽️ 𝐒𝐭𝐚𝐭𝐮𝐬 : ${isEnable? 'Activado': 'Desactivado'}
+🗣 𝐋𝐮𝐠𝐚𝐫 : ${isAll? 'En El Mejor Grupo': isUser? '*Usuario específico*': 'En El Chat De Evolution'}
 
 > 𝐒𝐢 𝐃𝐞𝐬𝐞𝐚𝐬 𝐂𝐨𝐦𝐩𝐫𝐚𝐫 𝐄𝐥 𝐁𝐨𝐭 𝐄𝐬𝐜𝐫𝐢𝐛𝐞 .𝐬𝐡𝐨𝐩𝐞𝐯𝐨  👑`)
 }
