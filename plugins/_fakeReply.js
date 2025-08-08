@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 export async function before(m, { conn }) {
-let name = `Quieres bot gratis | Sigue el canal`
+let name = `𝗥𝗲𝗳𝗲𝗿𝗲𝗻𝗰𝗶𝗮𝘀 | 𝗡𝗼𝘁𝗶𝗳𝗶𝗰𝗮𝗰𝗶𝗼𝗻𝗲𝘀 𝗘𝘃𝗼𝗹𝘂𝘁𝗶𝗼𝗻`
 /* let imagenes = ["https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
 "https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
 "https://raw.githubusercontent.com/WillZek/Storage-CB/main/images/c27c82d09da8.jpg",
