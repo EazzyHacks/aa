@@ -18,8 +18,8 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
 },
         message: {
             locationMessage: {
-                name: "*Sasuke Bot MD 🌀*",
-                jpegThumbnail: await (await fetch('https://files.catbox.moe/1j784p.jpg')).buffer(),
+                name: "【 𝐄𝐯𝐨𝐥𝐮𝐭𝐢𝐨𝐧 𝐁𝐨𝐭 】",
+                jpegThumbnail: await (await fetch('https://files.catbox.moe/hrey02.png')).buffer(),
                 vcard:
                     "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
@@ -27,10 +27,10 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
                     "FN:Sasuke Bot\n" +
                     "ORG:Barboza Developers\n" +
                     "TITLE:\n" +
-                    "item1.TEL;waid=19709001746:+1 (970) 900-1746\n" +
+                    "item1.TEL;waid=51936994155:+51 936 994 155\n" +
                     "item1.X-ABLabel:Alien\n" +
                     "X-WA-BIZ-DESCRIPTION:🛸 Llamado grupal universal con estilo.\n" +
-                    "X-WA-BIZ-NAME:Sasuke\n" +
+                    "X-WA-BIZ-NAME:Evolution\n" +
                     "END:VCARD"
 }
 },
