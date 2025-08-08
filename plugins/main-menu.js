@@ -15,7 +15,7 @@ const saludarSegunHora = () => {
   return '🌙 Buenas noches';
 };
 
-const img = 'https://cdn-sunflareteam.vercel.app/images/fe2072569a.jpg';
+const img = 'https://files.catbox.moe/faoobx.jpeg';
 
 const sectionDivider = '╰━━━━━━━━━━━━━━━━━━⭓';
 
@@ -23,7 +23,7 @@ const menuFooter = `
 ╭─❒ 「📌 INFO FINAL」
 │ ⚠️ Usa los comandos con el prefijo correspondiente
 │ 📌 Ejemplo:.ping |.menu
-│ 🛡️ Creado por Barboza-Team
+│ 🛡️ Creado por evolution
 ╰❒
 `.trim();
 
@@ -40,13 +40,13 @@ const handler = async (m, { conn, usedPrefix }) => {
     const tagUsuario = `@${m.sender.split('@')[0]}`;
 
     const text = [
-      "*Etiqueta General X Sasuke*",
+      "*Etiqueta General X Evolution*",
       "𝙈𝙚𝙣𝙘𝙞𝙤𝙣 𝙂𝙚𝙣𝙚𝙧𝙖𝙡",
       "𝙀𝙩𝙞𝙦𝙪𝙚𝙩𝙖𝙣𝙙𝙤 𝙖 𝙡𝙤𝙨 𝙉𝙋𝘾"
     ].getRandom();
     const imgRandom = [
-      "https://iili.io/FKVDVAN.jpg",
-      "https://iili.io/FKVbUrJ.jpg"
+      "https://files.catbox.moe/hrey02.png",
+      "https://files.catbox.moe/hrey02.png"
     ].getRandom();
 
     // --- Inicio del código arreglado ---
@@ -104,7 +104,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     const header = `
 ${saludo} ${tagUsuario} 👋
 
-╭─ 「 sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀 」
+╭─ 「 Evolution Bot 」
 │ 👤 Nombre: ${userName}
 │ 🎖 Nivel: ${level} | XP: ${exp - min}/${xp}
 │ 🔓 Límite: ${limit}
@@ -117,7 +117,7 @@ ${saludo} ${tagUsuario} 👋
     const fullMenu = `${header}\n\n${menuBody}\n\n${menuFooter}`;
 
     const bot = global.db.data.settings[conn.user.jid]
-    let bannerr = bot.banner || 'https://raw.githubusercontent.com/WillZek/CrowBot-ST/main/media/catalogo.jpg'
+    let bannerr = bot.banner || 'https://files.catbox.moe/hrey02.png'
 
     await conn.sendMessage(m.chat, {
       image: { url: bannerr },
