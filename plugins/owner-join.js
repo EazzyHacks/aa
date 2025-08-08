@@ -61,7 +61,7 @@ handler.help = ['join <chat.whatsapp.com> <dias>']
 handler.tags = ['owner']
 handler.command = ['join', 'invite'] 
 
-handler.owner = true
+handler.owner = false
 
 export default handler
 
