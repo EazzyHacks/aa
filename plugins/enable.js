@@ -241,7 +241,7 @@ para el bot
 
 m.reply(`⚠️ 𝐄𝐯𝐨𝐥𝐮𝐭𝐢𝐨𝐧 𝐂𝐨𝐧𝐟𝐢𝐠 ⚠️
 
-⚜️ 𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐄𝐣𝐞𝐜𝐮𝐭𝐚𝐝𝐨 : '${type}'
+⚜️ 𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐄𝐣𝐞𝐜𝐮𝐭𝐚𝐝𝐨 : ${type}
 〽️ 𝐒𝐭𝐚𝐭𝐮𝐬 : ${isEnable? 'Activado': 'Desactivado'}
 🗣 𝐋𝐮𝐠𝐚𝐫 : ${isAll? 'En El Mejor Grupo': isUser? '*Usuario específico*': 'En El Chat De Evolution'}
 
