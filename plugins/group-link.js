@@ -14,6 +14,6 @@ handler.tags = ['grupo'];
 handler.command = ['link', 'linkgroup'];
 
 handler.group = true;
-handler.botAdmin = true;
+handler.botAdmin = false;
 
 export default handler;
