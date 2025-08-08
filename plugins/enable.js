@@ -239,13 +239,13 @@ para el bot
       throw false
   }
 
-m.reply(`⚠️ *sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀 Notificación* ⚠️
+m.reply(`⚠️ 𝐄𝐯𝐨𝐥𝐮𝐭𝐢𝐨𝐧 𝐂𝐨𝐧𝐟𝐢𝐠 ⚠️
 
-💎 *Comando ejecutado:* *${type}*
-👤 *Estado actual:* *${isEnable? 'Activado ✅': 'Desactivado ❌'}*
-📍 *Ámbito:* ${isAll? '*Todo el Bot* 🌐': isUser? '*Usuario específico* 👥': '*Este Chat* 💬'}
+⚜️ 𝐂𝐨𝐦𝐚𝐧𝐝𝐨 𝐄𝐣𝐞𝐜𝐮𝐭𝐚𝐝𝐨 : '${type}'
+〽️ 𝐒𝐭𝐚𝐭𝐮𝐬 : '${isEnable?' 'Activado': 'Desactivado'}
+🗣 𝐋𝐮𝐠𝐚𝐫 : '${isAll?' '𝐄𝐧 𝐄𝐥 𝐌𝐞𝐣𝐨𝐫 𝐆𝐫𝐮𝐩𝐨': isUser? '*Usuario específico*': '𝐄𝐧 𝐄𝐥 𝐂𝐡𝐚𝐭'}
 
-🚀 *Muchas gracias por usar sᥲsᥙkᥱ ᑲ᥆𝗍 mძ 🌀*🎖️`)
+> 𝐒𝐢 𝐃𝐞𝐬𝐞𝐚𝐬 𝐂𝐨𝐦𝐩𝐫𝐚𝐫 𝐄𝐥 𝐁𝐨𝐭 𝐄𝐬𝐜𝐫𝐢𝐛𝐞 .𝐬𝐡𝐨𝐩𝐞𝐯𝐨  👑`)
 }
 
 handler.help = ['enable', 'disable', 'on', 'off']
