@@ -46,8 +46,8 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
     let edit = `⚙️ ${usuario} ha ajustado la configuración del grupo.\n\n> 🔒 Ahora *${m.messageStubParameters[0] == 'on'? 'solo los administradores': 'todos'}* pueden configurar el grupo.`
     let newlink = `🔗 *¡El enlace del grupo ha sido restablecido!* 🔗\n\n> 💫 Acción realizada por: ${usuario}`
     let status = `🗣️ El grupo ha sido *${m.messageStubParameters[0] == 'on'? 'cerrado': 'abierto'}* por ${usuario}!\n\n> 💬 Ahora *${m.messageStubParameters[0] == 'on'? 'solo los administradores': 'todos'}* pueden enviar mensajes.`
-    let admingp = `👑 @${m.messageStubParameters[0].split`@`[0]} *¡Ahora es administrador del grupo!* 👑\n\n> 💫 Acción realizada por: ${usuario}`
-    let noadmingp = `🗑️ @${m.messageStubParameters[0].split`@`[0]} *ha dejado de ser administrador del grupo.* 🗑️\n\n> 💫 Acción realizada por: ${usuario}`
+    let admingp = `🤖 𝐄𝐯𝐨𝐥𝐮𝐭𝐢𝐨𝐧 𝐀𝐯𝐢𝐬𝐨 🤖\n\n 🗣️ 𝐍𝐮𝐞𝐯𝐨 𝐀𝐝𝐦𝐢𝐧 : @${m.messageStubParameters[0].split`@`[0]}\n🫶🏼 𝐆𝐫𝐚𝐜𝐢𝐚𝐬 𝐀 : ${usuario}\n\n> 𝐒𝐢 𝐃𝐞𝐬𝐞𝐚𝐬 𝐂𝐨𝐦𝐩𝐫𝐚𝐫 𝐄𝐥 𝐁𝐨𝐭 𝐄𝐬𝐜𝐫𝐢𝐛𝐞 .𝐬𝐡𝐨𝐩𝐞𝐯𝐨 👑`
+    let noadmingp = `🤖 𝐄𝐯𝐨𝐥𝐮𝐭𝐢𝐨𝐧 𝐀𝐯𝐢𝐬𝐨 🤖\n\n 🗣️ 𝐀𝐝𝐦𝐢𝐧 𝐌𝐞𝐧𝐨𝐬 : @${m.messageStubParameters[0].split`@`[0]}\n☠️ 𝐅𝐮𝐞 𝐐𝐮𝐢𝐭𝐚𝐝𝐨 𝐏𝐨𝐫 :  ${usuario}\n\n> 𝐒𝐢 𝐃𝐞𝐬𝐞𝐚𝐬 𝐂𝐨𝐦𝐩𝐫𝐚𝐫 𝐄𝐥 𝐁𝐨𝐭 𝐄𝐬𝐜𝐫𝐢𝐛𝐞 .𝐬𝐡𝐨𝐩𝐞𝐯𝐨 👑`
 
     if (chat.detect && m.messageStubType == 21) {
         await this.sendMessage(m.chat, { text: nombre, mentions: [m.sender]}, { quoted: fkontak})
