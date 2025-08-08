@@ -37,13 +37,13 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args}) =
     return countryFlags[prefix] || '🏳️‍🌈';
 };
 
-  let messageText = `*╭───── •* *Eazzy Bot Supreme* *• ─────╮*\n*├⭓ 🐺 Bot :* https://chat.whatsapp.com/L6yIwe8qZVpGOYnrz8jMxU?mode=ac_t\n*├⭓ 🛡 Grupo :* ${groupName}\n*├⭓ 🗣 Integrantes :* ${participants.length}\n*├⭓ ✨Texto :*${customMessage}\n*├*\n`;
+  let messageText = `*╭───── •* *Evolution Bot Supreme* *• ─────╮*\n*├⭓ 🛡 Grupo :* ${groupName}\n*├⭓ 🗣 Integrantes :* ${participants.length}\n*├⭓ ✨Texto :*${customMessage}\n*├*\n`;
   for (const mem of participants) {
     messageText += `*├⭓${getCountryFlag(mem.id)}* *@${mem.id.split('@')[0]}*\n`;
 }
   messageText += `*╰───── •  ☁ • ─────╯*`;
 
-  const imageUrl = 'https://files.catbox.moe/mrtzyt.jpg';
+  const imageUrl = 'https://files.catbox.moe/hrey02.png';
   const audioUrl = 'https://files.catbox.moe/2pyt43.mpeg';
 
   const fkontak = {
