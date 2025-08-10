@@ -1,135 +1,128 @@
-import { xpRange } from '../lib/levelling.js';
-import axios from 'axios';
-
-const clockString = ms => {
-  const h = Math.floor(ms / 3600000);
-  const m = Math.floor(ms / 60000) % 60;
-  const s = Math.floor(ms / 1000) % 60;
-  return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
-};
-
-const saludarSegunHora = () => {
-  const hora = new Date().getHours();
-  if (hora >= 5 && hora < 12) return '🌄 Buenos días';
-  if (hora >= 12 && hora < 19) return '🌞 Buenas tardes';
-  return '🌙 Buenas noches';
-};
-
-const img = 'https://files.catbox.moe/faoobx.jpeg';
-
-const sectionDivider = '╰━━━━━━━━━━━━━━━━━━⭓';
-
-const menuFooter = `
-╭─❒ 「📌 INFO FINAL」
-│ ⚠️ Usa los comandos con el prefijo correspondiente
-│ 📌 Ejemplo:.ping |.menu
-│ 🛡️ Creado por evolution
-╰❒
-`.trim();
-
 const handler = async (m, { conn, usedPrefix }) => {
-  try {
-    const saludo = saludarSegunHora();
-    const user = global.db.data.users[m.sender] || { level: 1, exp: 0, limit: 5 };
-    const { exp, level, limit } = user;
-    const { min, xp } = xpRange(level, global.multiplier || 1);
-    const totalUsers = Object.keys(global.db.data.users).length;
-    const mode = global.opts?.self ? 'Privado 🔒' : 'Público 🌐';
-    const uptime = clockString(process.uptime() * 1000);
-    const userName = await conn.getName(m.sender);
-    const tagUsuario = `@${m.sender.split('@')[0]}`;
+  // Reacción del bot al recibir el comando
+  await conn.sendMessage(m.chat, { react: { text: '🧨', key: m.key } });
 
-    const text = [
-      "*Etiqueta General X Evolution*",
-      "𝙈𝙚𝙣𝙘𝙞𝙤𝙣 𝙂𝙚𝙣𝙚𝙧𝙖𝙡",
-      "𝙀𝙩𝙞𝙦𝙪𝙚𝙩𝙖𝙣𝙙𝙤 𝙖 𝙡𝙤𝙨 𝙉𝙋𝘾"
-    ].getRandom();
-    const imgRandom = [
-      "https://files.catbox.moe/hrey02.png",
-      "https://files.catbox.moe/hrey02.png"
-    ].getRandom();
+  const plugins = Object.values(global.plugins || {}).filter(p => !p?.disabled);
 
-    // --- Inicio del código arreglado ---
-    let thumbnailBuffer;
-    try {
-      const response = await axios.get(imgRandom, { responseType: 'arraybuffer' });
-      thumbnailBuffer = Buffer.from(response.data);
-    } catch (e) {
-      console.error('❌ Error al descargar la imagen para el quoted:', e);
-      // Usar una imagen de respaldo o un buffer vacío si falla
-      // Si usas un buffer vacío, asegúrate de que el resto del código lo maneje.
-      thumbnailBuffer = Buffer.from('');
-    }
-    // --- Fin del código arreglado ---
+  // --- Variables para la apariencia de canal (puedes personalizarlas) ---
+  const botname = 'Evolution IA';
+  const textbot = 'Asistente virtual de WhatsApp';
+  const banner = 'https://files.catbox.moe/hrey02.png  ';
+  const redes = 'https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m';
 
-    const izumi = {
-      key: { participants: "0@s.whatsapp.net", fromMe: false, id: "Halo" },
-      message: {
-        locationMessage: {
-          name: text,
-          jpegThumbnail: thumbnailBuffer,
-          vcard:
-            "BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\n" +
-            "item1.TEL;waid=19709001746:+1 (970) 900-1746\nitem1.X-ABLabel:Unlimited\n" +
-            "X-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD"
-        }
-      },
-      participant: "0@s.whatsapp.net"
-    };
-    // --- Fin del código agregado ---
+  // --- Mapeo de categorías con decoraciones mejoradas ---
+  const categoryMap = {
+    main:          '🌟 𝗖𝗼𝗺𝗮𝗻𝗱𝗼𝘀 𝗣𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹𝗲𝘀',
+    rg:            '📝 𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗼',
+    info:          '📋 𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝗰𝗶𝗼́𝗻 𝗱𝗲𝗹 𝗕𝗼𝘁',
+    descargas:     '🚀 𝗗𝗲𝘀𝗰𝗮𝗿𝗴𝗮𝘀',
+    buscadores:    '🔍 𝗕𝘂𝘀𝗰𝗮𝗱𝗼𝗿𝗲𝘀',
+    ia:            '🧠 𝗜𝗻𝘁𝗲𝗹𝗶𝗴𝗲𝗻𝗰𝗶𝗮 𝗔𝗜',
+    imagen:        '🖼️ 𝗚𝗲𝗻𝗲𝗿𝗮𝗱𝗼𝗿 𝗱𝗲 𝗜𝗺𝗮́𝗴𝗲𝗻𝗲𝘀',
+    transformador: '🔄 𝗖𝗼𝗻𝘃𝗲𝗿𝘀𝗼𝗿𝗲𝘀',
+    fun:           '🎉 𝗗𝗶𝘃𝗲𝗿𝘀𝗶𝗼́𝗻 𝘆 𝗝𝘂𝗲𝗴𝗼𝘀',
+    game:          '🎮 𝗝𝘂𝗲𝗴𝗼𝘀',
+    anime:         '🎌 𝗔𝗻𝗶𝗺𝗲',
+    gacha:         '🎰 𝗚𝗮𝗰𝗵𝗮',
+    grupo:         '👥 𝗖𝗼𝗺𝗮𝗻𝗱𝗼𝘀 𝗱𝗲 𝗚𝗿𝘂𝗽𝗼',
+    group:         '👥 𝗖𝗼𝗺𝗮𝗻𝗱𝗼𝘀 𝗱𝗲 𝗚𝗿𝘂𝗽𝗼',
+    text:          '✒️ 𝗘𝗳𝗲𝗰𝘁𝗼𝘀 𝗱𝗲 𝗧𝗲𝘅𝘁𝗼',
+    rpg:           '🪄 𝗥𝗣𝗚 𝘆 𝗘𝗰𝗼𝗻𝗼𝗺𝗶́𝗮',
+    sticker:       '🧧 𝗦𝘁𝗶𝗰𝗸𝗲𝗿𝘀',
+    tools:         '🔧 𝗛𝗲𝗿𝗿𝗮𝗺𝗶𝗲𝗻𝘁𝗮𝘀 𝗨́𝘁𝗶𝗹𝗲𝘀',
+    nsfw:          '🔞 𝗖𝗼𝗻𝘁𝗲𝗻𝗶𝗱𝗼 +18',
+    owner:         '👑 𝗖𝗼𝗺𝗮𝗻𝗱𝗼𝘀 𝗱𝗲 𝗣𝗿𝗼𝗽𝗶𝗲𝘁𝗮𝗿𝗶𝗼',
+  };
 
-    let categorizedCommands = {};
-    Object.values(global.plugins)
-      .filter(p => p?.help && !p.disabled)
-      .forEach(p => {
-        const tag = Array.isArray(p.tags) ? p.tags[0] : p.tags || 'Otros';
-        const cmds = Array.isArray(p.help) ? p.help : [p.help];
-        categorizedCommands[tag] = categorizedCommands[tag] || new Set();
-        cmds.forEach(cmd => categorizedCommands[tag].add(usedPrefix + cmd));
-      });
-
-    const categoryEmojis = {
-      anime: '🎭', info: 'ℹ️', search: '🔎', diversión: '🎉', subbots: '🤖',
-      rpg: '🌀', registro: '📝', sticker: '🎨', imagen: '🖼️', logo: '🖌️',
-      premium: '🎖️', configuración: '⚙️', descargas: '📥', herramientas: '🛠️',
-      nsfw: '🔞', 'base de datos': '📀', audios: '🔊', 'freefire': '🔥', otros: '🪪'
-    };
-
-    const menuBody = Object.entries(categorizedCommands).map(([title, cmds]) => {
-      const emoji = categoryEmojis[title.toLowerCase()] || '📁';
-      const list = [...cmds].map(cmd => `│ ◦ ${cmd}`).join('\n');
-      return `╭─「 ${emoji} ${title.toUpperCase()} 」\n${list}\n${sectionDivider}`;
-    }).join('\n\n');
-
-    const header = `
-${saludo} ${tagUsuario} 👋
-
-╭─ 「 Evolution Bot 」
-│ 👤 Nombre: ${userName}
-│ 🎖 Nivel: ${level} | XP: ${exp - min}/${xp}
-│ 🔓 Límite: ${limit}
-│ 🧭 Modo: ${mode}
-│ ⏱️ Tiempo activo: ${uptime}
-│ 🌍 Usuarios registrados: ${totalUsers}
-╰─❒
-`.trim();
-
-    const fullMenu = `${header}\n\n${menuBody}\n\n${menuFooter}`;
-
-    const bot = global.db.data.settings[conn.user.jid]
-    let bannerr = bot.banner || 'https://files.catbox.moe/hrey02.png'
-
-    await conn.sendMessage(m.chat, {
-      image: { url: bannerr },
-      caption: fullMenu,
-      mentions: [m.sender]
-    }, { quoted: izumi });
-
-  } catch (e) {
-    console.error('❌ Error al generar el menú:', e);
-    await conn.reply(m.chat, '⚠️ Ocurrió un error al mostrar el menú.', m);
+  // --- Lógica para obtener datos dinámicos ---
+  const date = new Date();
+  const options = {
+    year: 'numeric', month: 'long', day: 'numeric',
+    timeZone: 'America/Mexico_City',
+  };
+  const fecha = date.toLocaleDateString('es-ES', options);
+  const hora = date.toLocaleTimeString('es-ES', { timeZone: 'America/Mexico_City' });
+  
+  const hour = date.getHours();
+  let saludo;
+  if (hour >= 5 && hour < 12) {
+    saludo = 'Buenos días';
+  } else if (hour >= 12 && hour < 19) {
+    saludo = 'Buenas tardes';
+  } else {
+    saludo = 'Buenas noches';
   }
+  
+  const _uptime = process.uptime() * 1000;
+  const uptime = clockString(_uptime);
+  const totalreg = Object.keys(global.db.data.users).length;
+  let totalCommands = 0;
+  
+  // --- Agrupa comandos por categoría (manteniendo la lógica original) ---
+  const categoryCommands = {};
+  for (let plugin of plugins) {
+    const tags = Array.isArray(plugin.tags) ? plugin.tags : (plugin.tags ? [plugin.tags] : []);
+    const helps = Array.isArray(plugin.help) ? plugin.help : (plugin.help ? [plugin.help] : []);
+    
+    if (helps.length > 0) totalCommands += helps.length;
+    
+    for (let tag of tags) {
+      if (!categoryMap[tag]) continue;
+      if (!categoryCommands[tag]) categoryCommands[tag] = new Set();
+      helps.forEach(h => {
+        if (typeof h === 'string') categoryCommands[tag].add(h.trim());
+      });
+    }
+  }
+
+  // --- Construye el menú con la nueva decoración ---
+  let menu = `
+╭━━━❪ ✨ *Evolution Bot* ✨ ❫━━━╮
+│
+│ 🤖 *Versión:* v1.0.0
+│ 👤 *Creador:* @evolution.hack
+│ 👋 ${saludo}, @${m.sender.split('@')[0]}
+│ 🗓️ *Fecha:* ${fecha}
+│ ⏰ *Hora:* ${hora}
+╰━━━━━━━━━━━━━━━━━━━━━╯
+╭━━━❪ 📊 𝗘𝘀𝘁𝗮𝗱𝗶́𝘀𝘁𝗶𝗰𝗮𝘀 ❫━━━━╮
+│
+│ 🕒 *Actividad:* ${uptime}
+│ 👥 *Usuarios:* ${totalreg}
+│ 📚 *Comandos:* ${totalCommands}
+╰━━━━━━━━━━━━━━━━━━━━╯
+`
+  for (let [tag, label] of Object.entries(categoryMap)) {
+    const cmds = categoryCommands[tag];
+    if (!cmds || cmds.size === 0) continue;
+    menu += `╭─┈➤ 『 ${label} 』
+│
+`;
+    for (let cmd of [...cmds].sort()) {
+      menu += `│ ◦ ${usedPrefix}${cmd}\n`;
+    }
+    menu += `╰───────────────\n\n`;
+  }
+  menu += '> _Creado por @evolution.hack_';
+
+  // --- Envía el mensaje solo con la imagen completa y el texto del menú ---
+  await conn.sendMessage(m.chat, {
+    image: { url: banner },
+    caption: menu,
+  }, { quoted: m });
 };
 
-handler.command = ['menu', 'help', 'menú'];
+handler.command = /^(menu|help|comandos)$/i;
 export default handler;
+
+function clockString(ms) {
+  let d = Math.floor(ms / (1000 * 60 * 60 * 24))
+  let h = Math.floor((ms / (1000 * 60 * 60)) % 24)
+  let m = Math.floor((ms / (1000 * 60)) % 60)
+  let s = Math.floor((ms / 1000) % 60)
+  let dDisplay = d > 0 ? d + (d === 1 ? " día, " : " días, ") : ""
+  let hDisplay = h > 0 ? h + (h === 1 ? " hora, " : " horas, ") : ""
+  let mDisplay = m > 0 ? m + (m === 1 ? " minuto, " : " minutos, ") : ""
+  let sDisplay = s > 0 ? s + (s === 1 ? " segundo" : " segundos") : ""
+  return dDisplay + hDisplay + mDisplay + sDisplay
+}
