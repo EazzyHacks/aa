@@ -6,28 +6,29 @@ let handler = async (m, { conn }) => {
 
     // Mensaje que se enviará
     const message = `
-*¡AQUÍ ESTÁN LOS PRECIOS!*
+*Deseas Bot Perzonalizado O Pa Tu Grupo ¿? ⭐*
+> 1 Grupo Permanente : *5 So*
+> 2 Grupos Permanente : *7 So*
+> 3 Grupos Permanente : *11 So*
+> 4 Grupos Permanente : *16 So*
 
-1 BOT = 3$
-2 BOT = 6$
-3 BOT = 9$
-4 BOT = 12$
-5 BOT = 15$
+> Bot Perzonalizado : *35 So*
 
-> Bot Para Grupos ⭐`;
+Grupo Wa : https://chat.whatsapp.com/I4yJ2vrlhGXH3JRg06mxFZ
+Canal / Notificaciones : https://whatsapp.com/channel/0029Vb5oUp43LdQUVViHwc0m`;
 
     if (m.isGroup) {
         // URL de la imagen
-        const imageUrl ='https://files.catbox.moe/hrey02.png'; // Cambia esta URL por la de la imagen que deseas enviar
+        const imageUrl ='https://files.catbox.moe/5toexd.jpeg'; // Cambia esta URL por la de la imagen que deseas enviar
 
         // Envía la imagen con el mensaje
         await conn.sendMessage(m.chat, { image: { url: imageUrl }, caption: message }, { mimetype: 'image/jpeg' });
     }
 }
 
-handler.help = ['precios2'];
+handler.help = ['evoshop'];
 handler.tags = ['main'];
 handler.group = true;
-handler.command = ['precios2', 'p2'];
+handler.command = ['evoshop', 'evoshop'];
 
 export default handler;
